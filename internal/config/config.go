@@ -272,7 +272,8 @@ type RedisConf struct {
 
 type IPRegionConf struct {
 	Enabled   bool   `koanf:"enabled" json:"enabled"`     // 启用 IP 属地展示
-	DBPath    string `koanf:"db_path" json:"db_path"`     // 数据文件路径
+	DBPath    string `koanf:"db_path" json:"db_path"`     // IPv4 数据文件路径 (.xdb)
+	DBPathV6  string `koanf:"db_path_v6" json:"db_path_v6"` // IPv6 数据文件路径 (.xdb)，留空则仅使用 IPv4 库
 	Precision string `koanf:"precision" json:"precision"` // 显示精度
 }
 

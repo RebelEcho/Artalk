@@ -207,6 +207,12 @@ func (conf *Config) ipRegionPatch() {
 		conf.IPRegion.Enabled = false
 	}
 
+	// IPv6 数据库为可选：配置了但文件缺失时降级为仅 IPv4
+	if conf.IPRegion.DBPathV6 != "" && !utils.CheckFileExist(conf.IPRegion.DBPathV6) {
+		log.Warn("未找到 IPv6 数据库文件：" + strconv.Quote(conf.IPRegion.DBPathV6) + "，将仅使用 IPv4 数据库")
+		conf.IPRegion.DBPathV6 = ""
+	}
+
 	// 默认精确到省
 	if conf.IPRegion.Precision == "" {
 		conf.IPRegion.Precision = string(IPRegionProvince)
