@@ -1,0 +1,26 @@
+debug: false
+log_level: info
+
+server:
+  host: 0.0.0.0
+  port: 23366
+
+# 数据存储
+db:
+  type: sqlite
+  file: ./data/artalk.db
+
+# 站点信息
+locale: zh-CN
+
+# IP 属地展示（双栈：v4 + v6）
+ip_region:
+  enabled: true
+  db_path: ./data/ip2region_v4.xdb
+  db_path_v6: ./data/ip2region_v6.xdb
+  precision: city
+
+# 管理员（首次启动按此登录）
+admin_users:
+  - name: admin
+    email: hello@rebelecho.vip
